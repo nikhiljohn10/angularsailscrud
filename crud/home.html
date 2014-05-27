@@ -1,0 +1,51 @@
+ <h2>Users</h2>
+    
+	   
+		
+	      <!--<a  class="btn btn-primary"  ng-click="open('','create.html');" ><i class="glyphicon glyphicon-plus"></i> Create</a>-->
+	         <!-- ng-click="renderCreateForm();" -->
+	       <a  ng-href="#/create" class="btn btn-primary"   ><i class="glyphicon glyphicon-plus"></i> Create</a>
+	      <!-- <button class="btn btn-default" ng-click="open('','modal1.html')">Create</button>-->
+	      
+	       <!--<script type="text/ng-template" id="modal1.html">-->
+	       
+		<div id="view_container" class="modal fade">
+		  
+		  
+		  <div class="modal-dialog">
+		  
+		    <div class="modal-content">
+		           
+    
+	                 <div ng-view>View here</div>
+	        
+		  </div><!-- /.modal-content -->
+                 </div><!-- /.modal-dialog -->
+               </div><!-- /.modal -->
+	       <!--</script>-->
+	      <hr/>
+	      <div class="table-responsive">
+		<table  class="table table-bordered table-hover table-condensed">
+		  <th>Id</th><th>Name</th><th>Age</th><th>Active</th><th colspan="3" class="col-md-3" >Operations</th>
+		<tr ng-repeat="user in users">
+		      <td>{{user.id}}</td>
+		      <td>{{user.name}}</td>
+		      <td>{{user.age}}</td>
+		      <td>{{user.active}}</td>
+		      <td><a href="#/view/{{$index}}"  class="btn btn-default glyphicon glyphicon-eye-open"  ></a>
+		      <!--</td>
+		      <td>-->
+		      <a href="#/update/{{$index}}" class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
+		      <!--
+		      </td>
+		      <td>
+		      -->
+		      <a href=""  ng-click="delete(user)" class="btn btn-danger glyphicon glyphicon-remove" ></a></td>
+		    
+		</tr>
+		</table>
+		  <pagination total-items="totalItems" items-per-page="items_per_page" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+
+	      </div>   
+	      
+	    

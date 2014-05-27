@@ -1,0 +1,32 @@
+
+<div class="modal-header">
+	               <a ng-href="#" type="button" class="close" ng-click="closeModal();"  aria-hidden="true">&times;</a>  
+	              
+	  
+		       <h3  class="modal-title" >View #{{user.id}}</h3>
+		       
+		     
+		        
+	             
+</div>
+                      
+                       
+	
+	   
+	  
+	  <div class="modal-body">
+	  
+	                <div class="pull-right">
+		         <a href="#/update/{{user.index}}" class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
+	                 <a href=""  ng-click="delete(user)" class="btn btn-danger glyphicon glyphicon-remove" ></a>
+	                </div> 
+	
+
+<ul>
+ <li>Id:{{user.id}}</li>
+ <li>Name:{{user.name}}</li>
+ <li>Age:{{user.age}}</li>
+ <li>Active:{{user.active}}</li>
+</ul>
+
+    </div>
