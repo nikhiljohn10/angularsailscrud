@@ -3,8 +3,9 @@
     <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js"></script>
     <script src="angular-route.min.js"></script>
-    
+    <script src="angular-animate.min.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
+  
     
     <link href="bootstrap3/css/bootstrap.min.css" rel="stylesheet">
     
@@ -57,14 +58,18 @@
      </div>
    </div>  
   
-     <div ng-controller="UserCtrl">
-     
+     <div ng-controller="UserCtrl" >
+                   
+               
+                 <br/><br/>
 	    <div row="row">
-	      <div class="col-md-8 col-md-offset-2">
+	    
+	           
+	      <div class="col-md-8 col-md-offset-1">
 	      
-	      
-		  <h2>Users</h2>
-    
+	        
+		  
+                     <h2>Users</h2>
 	   
 		
 	      <!--<a  class="btn btn-primary"  ng-click="open('','create.html');" ><i class="glyphicon glyphicon-plus"></i> Create</a>-->
@@ -110,7 +115,7 @@
 		      <td><input type="text" ng-model="ageFilter" placeholder=""/></td>  
 		      <td><input type="text" ng-model="activeFilter" placeholder=""/></td> 
 		  </tr>
-		<tr ng-repeat="user in users  | filter:{id:idFilter,name:nameFilter,age:ageFilter,active:activeFilter} | orderBy:sortField:reverse ">
+		<tr ng-animate="{enter: 'animated flip'}" ng-repeat="user in users  | filter:{id:idFilter,name:nameFilter,age:ageFilter,active:activeFilter} | orderBy:sortField:reverse ">
 		      <td>{{user.id}}</td>
 		      <td>{{user.name}}</td>
 		      <td>{{user.age}}</td>
@@ -130,10 +135,26 @@
 		  <pagination total-items="totalItems" items-per-page="items_per_page" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 
 	      </div>   
-	      
-	    
-
-	    </div>   
+	               
+	            <!--
+	            <div class="alert alert-success col-md-3 col-md-offset-12">
+                       <a href="#" class="alert-link"> Succesfully Added</a>
+                    </div>
+                   -->
+	    </div>  
+	            <br/>
+	            <div class="col-md-3 " id="alert_container">
+	            
+		     
+		      
+	            </div>  
+	            <!--
+	            <div class="alert alert-warning alert-dismissable">
+		       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+	             </div>
+	             -->
+	             
 	  </div>
 
       </div>
@@ -142,9 +163,28 @@
          
     </body>
     <script>
+
     
+    function showMessage(message,type,fadeOut){
+        
+           var content='<div class="alert alert-'+type+' alert-dismissable">\
+		        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
+			<a href="#" class="alert-link"> '+message+'</a>\
+		      </div>';
+		      
+	   $("#alert_container").append(content);	
+	   
+	   if(fadeOut==true)
+	   {
+             $(".alert").fadeOut(4000);
+           }  
+        }
+    function hideMessage(){
     
-   var app1 = angular.module('app1', ['ngRoute','ui.bootstrap']);
+            $("#alert_container").html("");
+     }
+    
+   var app1 = angular.module('app1', ['ngRoute','ui.bootstrap','ngAnimate']);
 
 
 	// configure our routes
@@ -173,11 +213,13 @@
 	// create the controller and inject Angular's $scope
 	app1.controller('createController', function($scope,$routeParams) {
 
+	     
+	     
 	  $('#view_container').modal({
-	    show:true
+	    show:true,
+	    backdrop:false
 	    });
-	    
-	   
+	
 	    
 	});
 	
@@ -196,7 +238,8 @@
 		  $scope.user.index=$routeParams.id;
 		  
 		$('#view_container').modal({
-	        show:true
+	        show:true,
+	        backdrop:false
 	        });
 		
 	
@@ -268,6 +311,8 @@
 	     var index=$scope.users.push($model);
 	   
 	     $scope.user=$model;
+	     
+	     showMessage("Succesfully Added!",'success',true);
 	 
 	     $location.path("view/"+index);
 	    
@@ -284,6 +329,7 @@
 	     //var index=$scope.users.push($model);
 	   
 	     //$scope.user=$model;
+	      showMessage("Succesfully Updated!",'success',true);    
 	 
 	     $location.path("view/"+$user.index);
 	    
@@ -297,6 +343,10 @@
 	     $('#view_container').modal('toggle');
 	   
         };
+        
+      
+        
+        //openAlert("test");
         $scope.delete = function($user) {
             
               var r = confirm("Are you sure?");
@@ -307,6 +357,8 @@
               $scope.users.splice( $scope.users.indexOf($user), 1 );
               //$('#view_container').modal('toggle');
               $('#view_container').modal('hide');
+               
+              showMessage("Deleted Succesfully!",'success',true); 
                
               $location.path("/");
                   
