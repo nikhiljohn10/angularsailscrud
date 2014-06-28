@@ -1,24 +1,28 @@
-<!doctype html>
-    <html ng-app="app1">
+<!DOCTYPE html>
+  <html ng-app="app">
     <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js"></script>
-    <script src="angular-route.min.js"></script>
-    <script src="angular-animate.min.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
-  
-    
-    <link href="bootstrap3/css/bootstrap.min.css" rel="stylesheet">
-    
-    <script src="bootstrap3/js/jquery.min.js"></script>
-    <script src="bootstrap3/js/bootstrap.min.js"></script>
-    <!--
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
-    -->      
-    <script src="todo.js"></script>
-    <link rel="stylesheet" href="todo.css">
+            <title>Angular Sails CRUD</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	    <script src="js/angular.min.js"></script>
+	    <script src="js/angular-route.min.js"></script>
+	    <script src="js/angular-ui-router.min.js"></script>
+	    <script src="js/angular-resource.min.js"></script>
+	    <script src="js/angular-animate.min.js"></script>
+	    <script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+	  
+	    
+	    <link href="bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+	    
+	    <script src="bootstrap3/js/jquery.min.js"></script>
+	    <script src="bootstrap3/js/bootstrap.min.js"></script>
+	    <!--
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
+	    -->      
+	    <script src="todo.js"></script>
+	    
     </head>
-    <body ng-app="app1">
+    <body ng-app="app">
     
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
      <div class="container">
@@ -31,12 +35,13 @@
             <span class="icon-bar"></span>
           </button>
           
-          <a class="navbar-brand" href="#">AngularJs CRUD</a>
+          <a class="navbar-brand" href="#">AngularJs + SailsJs + Bootstrap3 CRUD</a>
         </div>
         
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Users</a></li>
+            <li class="active"><a ui-sref="users" >Users</a></li>
+            <li ><a ui-sref="cities" >Cities</a></li>
             <!--
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -57,321 +62,26 @@
         </div><!--/.nav-collapse -->
      </div>
    </div>  
+     <div ui-view>
   
-     <div ng-controller="UserCtrl" >
-                   
-               
-                 <br/><br/>
-	    <div row="row">
-	    
-	           
-	      <div class="col-md-8 col-md-offset-1">
-	      
-	        
-		  
-                     <h2>Users</h2>
-	   
-		
-	      <!--<a  class="btn btn-primary"  ng-click="open('','create.html');" ><i class="glyphicon glyphicon-plus"></i> Create</a>-->
-	         <!-- ng-click="renderCreateForm();" -->
-	       <a  ng-href="#/create" class="btn btn-primary"   ><i class="glyphicon glyphicon-plus"></i> Create</a>
-	      <!-- <button class="btn btn-default" ng-click="open('','modal1.html')">Create</button>-->
-	      
-	       <!--<script type="text/ng-template" id="modal1.html">-->
-	       
-		<div id="view_container" class="modal">
-		  
-		  
-		  <div class="modal-dialog">
-		  
-		    <div class="modal-content">
-		           
-    
-	                 <div ng-view>View here</div>
-	        
-		  </div><!-- /.modal-content -->
-                 </div><!-- /.modal-dialog -->
-               </div><!-- /.modal -->
-	       <!--</script>-->
-	      <hr/>
-	      <div class="table-responsive">
-		<table  class="table table-bordered table-hover table-condensed">
-		  <th>
-		    <a href="" ng-click="sortField='id'; reverse=!reverse" >Id</a>
-		  </th>
-		  <th>
-		     <a href="" ng-click="sortField='name'; reverse=!reverse" >Name</a>
-		  </th>
-		  <th>
-		     <a href="" ng-click="sortField='age'; reverse=!reverse" >Age</a>
-		  </th>
-		  <th>
-		     <a href="" ng-click="sortField='active'; reverse=!reverse" >Active</a>
-		  </th>
-		  <th colspan="3" class="col-md-3" >Operations</th>
-		  <tr>
-		      <td><input type="text" size="4" ng-model="idFilter" placeholder=""/></td> 
-		      <td><input type="text" ng-model="nameFilter" placeholder=""/></td> 
-		      <td><input type="text" ng-model="ageFilter" placeholder=""/></td>  
-		      <td><input type="text" ng-model="activeFilter" placeholder=""/></td> 
-		  </tr>
-		<tr ng-animate="{enter: 'animated flip'}" ng-repeat="user in users  | filter:{id:idFilter,name:nameFilter,age:ageFilter,active:activeFilter} | orderBy:sortField:reverse ">
-		      <td>{{user.id}}</td>
-		      <td>{{user.name}}</td>
-		      <td>{{user.age}}</td>
-		      <td>{{user.active}}</td>
-		      <td><a href="#/view/{{$index}}"  class="btn btn-default glyphicon glyphicon-eye-open"  ></a>
-		      <!--</td>
-		      <td>-->
-		      <a href="#/update/{{$index}}" class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
-		      <!--
-		      </td>
-		      <td>
-		      -->
-		      <a href=""  ng-click="delete(user)" class="btn btn-danger glyphicon glyphicon-remove" ></a></td>
-		    
-		</tr>
-		</table>
-		  <pagination total-items="totalItems" items-per-page="items_per_page" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 
-	      </div>   
-	               
-	            <!--
-	            <div class="alert alert-success col-md-3 col-md-offset-12">
-                       <a href="#" class="alert-link"> Succesfully Added</a>
-                    </div>
-                   -->
-	    </div>  
-	            <br/>
-	            <div class="col-md-3 " id="alert_container">
-	            
-		     
-		      
-	            </div>  
-	            <!--
-	            <div class="alert alert-warning alert-dismissable">
-		       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		        <strong>Warning!</strong> Better check yourself, you're not looking too good.
-	             </div>
-	             -->
-	             
-	  </div>
-
-      </div>
-
-
+     </div>
+     
          
     </body>
-    <script>
-
-    
-    function showMessage(message,type,fadeOut){
-        
-           var content='<div class="alert alert-'+type+' alert-dismissable">\
-		        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>\
-			<a href="#" class="alert-link"> '+message+'</a>\
-		      </div>';
-		      
-	   $("#alert_container").append(content);	
-	   
-	   if(fadeOut==true)
-	   {
-             $(".alert").fadeOut(4000);
-           }  
-        }
-    function hideMessage(){
-    
-            $("#alert_container").html("");
-     }
-    
-   var app1 = angular.module('app1', ['ngRoute','ui.bootstrap','ngAnimate']);
-
-
-	// configure our routes
-	app1.config(function($locationProvider,$routeProvider) {
-		$routeProvider
-
-			.when('/create', {
-				templateUrl : 'create.html',
-				controller  : 'createController'
-			})
-			
-			.when('/view/:id', {
-				templateUrl : 'view.html',
-				controller  : 'viewController'
-			})
-			.when('/update/:id', {
-				templateUrl : 'update.html',
-				controller  : 'updateController'
-			})
-			//.otherwise({ redirectTo: '/' });
-	});
-	
-	
-	 
-
-	// create the controller and inject Angular's $scope
-	app1.controller('createController', function($scope,$routeParams) {
-
-	     
-	     
-	  $('#view_container').modal({
-	    show:true,
-	    backdrop:false
-	    });
-	
-	    
-	});
-	
-	app1.controller('viewController', function($scope,$routeParams) {
-		
-		
-		// $('#view_container').modal('toggle');
-		 
-	
-	        $user=$scope.users[$routeParams.id];
-	       if($user)
-	       {
-	         $scope.user=$user;
-	       } 
-		
-		  $scope.user.index=$routeParams.id;
-		  
-		$('#view_container').modal({
-	        show:true,
-	        backdrop:false
-	        });
-		
-	
-	});
-	
-	app1.controller('updateController', function($scope,$routeParams) {
-	
-	      
-	         
-	    
-	       $user=$scope.users[$routeParams.id];
-	       if($user)
-	       {
-	         $scope.user=$user;
-	       }  
-	       $scope.user.index=$routeParams.id;
-	       
-	       $('#view_container').modal({
-	    show:true
-	    
-	    });
-	    
-	     // alert(angular.toJson($scope.user));
-	});
-	//http://angular-ui.github.io/bootstrap/
-	
-        function UserCtrl($scope,$location,$log) {
-        
-               $scope.users = [
-	    {id:1,name:'Sirin',age:25 ,active:true},
-	    {id:2,name:'Mahesh',age:28 ,active:false},
-	    {id:3,name:'Sirin',age:25 ,active:true},
-	    {id:4,name:'Mahesh',age:28 ,active:false},
-	    {id:5,name:'Sirin',age:25 ,active:true},
-	    {id:6,name:'Mahesh',age:28 ,active:false},
-	    {id:7,name:'Sirin',age:25 ,active:true},
-	    {id:8,name:'Mahesh',age:28 ,active:false}
-	    
-	    ];
-	    
-            $scope.totalItems=100;
-            $scope.items_per_page = 10;
-            $scope.currentPage = 4;
-            
-            $scope.sortField="id";
-            $scope.reverse=true;
-            
-            $scope.setPage = function (pageNo) {
-                //alert(pageNo);
-		$scope.currentPage = pageNo;
-	      
-	      };
-
-	      $scope.pageChanged = function() {
-	        //alert($scope.currentPage);
-		console.log('Page changed to: ' + $scope.currentPage);
-	      };
-  
-            
-	 
-	
-	  $scope.addUser = function($user) {
-	  
-
-	     var id=Math.floor((Math.random() * 10) + 1);
-	     
-	     $model={id:id,name:$user.name,age:$user.age, active:true};
-	     
-	     var index=$scope.users.push($model);
-	   
-	     $scope.user=$model;
-	     
-	     showMessage("Succesfully Added!",'success',true);
-	 
-	     $location.path("view/"+index);
-	    
-	    
-	
-        };
-          $scope.updateUser = function($user) {
-	  
-
-	     //var id=Math.floor((Math.random() * 10) + 1);
-	     
-	     //$model={id:id,name:$user.name,age:$user.age, active:true};
-	     
-	     //var index=$scope.users.push($model);
-	   
-	     //$scope.user=$model;
-	      showMessage("Succesfully Updated!",'success',true);    
-	 
-	     $location.path("view/"+$user.index);
-	    
-	    
-	
-        };
-        
-        $scope.closeModal=function() {
-         
- 
-	     $('#view_container').modal('toggle');
-	   
-        };
-        
       
-        
-        //openAlert("test");
-        $scope.delete = function($user) {
-            
-              var r = confirm("Are you sure?");
-		  if (r != true) {
-		    return;
-		  }
-          
-              $scope.users.splice( $scope.users.indexOf($user), 1 );
-              //$('#view_container').modal('toggle');
-              $('#view_container').modal('hide');
-               
-              showMessage("Deleted Succesfully!",'success',true); 
-               
-              $location.path("/");
-                  
-        };
-     
-       
-         
-       
-    }	
- 
-
+    <script>    
     
-    </script>
-    
-    </html>
+   var app = angular.module('app', ['ngRoute','ui.bootstrap','ngAnimate','ngResource','ui.router']);
+   
+  </script>
+  
+  <script src="router/router.js"></script>
+  <script src="controllers/UserController.js"></script>
+  <script src="API/API.js"></script>
+  
+  
+  
 
+   
+</html>
