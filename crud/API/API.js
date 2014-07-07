@@ -1,7 +1,7 @@
  app.factory('$API', function($http,$location) {
 	 
-	        var host = "http://localhost:1337/";
-	        //var host = "http://angularsailscrud.herokuapp.com/";
+	       // var host = "http://localhost:1337/";
+	        var host = "http://angularsailscrud.herokuapp.com/";
 	        
 	    return {
 		      create:function(model,data,$scope) {
