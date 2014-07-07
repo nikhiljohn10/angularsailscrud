@@ -1,10 +1,10 @@
 
 <div class="modal-header">
-	               <a ui-sref="users" type="button" ng-click="closeModal()" class="close"   aria-hidden="true">&times;</a>
+	               <a ui-sref="cities" type="button" ng-click="closeModal()" class="close"   aria-hidden="true">&times;</a>
 	              
 		       <h3  class="modal-title" >View #{{model.id}}</h3>
 		       
-		       <a  ui-sref="users.create" class="btn btn-primary"   ><i class="glyphicon glyphicon-plus"></i> Create</a>
+		       <a  ui-sref="cities.create" class="btn btn-primary"   ><i class="glyphicon glyphicon-plus"></i> Create</a>
 		        
 	             
 </div>
@@ -18,7 +18,7 @@
 	  
 	                <div class="pull-right">
 	                 
-		         <a ui-sref="users.update({id:model.id})" class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
+		         <a ui-sref="cities.update({id:model.id})" class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
 	                 <a href=""  ng-click="delete(model)" class="btn btn-danger glyphicon glyphicon-remove" ></a>
 	                </div> 
 	
@@ -26,8 +26,6 @@
 <ul>
  <li>Id:{{model.id}}</li>
  <li>Name:{{model.name}}</li>
- <li>Age:{{model.age}}</li>
- <li>Active:{{model.active}}</li>
 </ul>
 
     </div>

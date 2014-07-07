@@ -86,10 +86,10 @@
 				      <td>{{user.name}}</td>
 				      <td>{{user.age}}</td>
 				      <td>{{user.active}}</td>
-				      <td><a ng-href="#/user/{{user.id}}"   class="btn btn-default glyphicon glyphicon-eye-open"  ></a>
+				      <td><a ui-sref="users.view({id:user.id})"   class="btn btn-default glyphicon glyphicon-eye-open"  ></a>
 				      <!--</td>
 				      <td>-->
-				      <a ng-href="#/user/update/{{user.id}}"  class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
+				      <a ui-sref="users.update({id:user.id})"  class="btn btn-primary glyphicon glyphicon-pencil"  ></a>
 				      <!--
 				      </td>
 				      <td>

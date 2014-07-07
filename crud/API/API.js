@@ -1,7 +1,7 @@
  app.factory('$API', function($http,$location) {
 	 
-	        //var host = "http://localhost:1337/";
-	        var host = "http://angularsailscrud.herokuapp.com/";
+	        var host = "http://localhost:1337/";
+	        //var host = "http://angularsailscrud.herokuapp.com/";
 	        
 	    return {
 		      create:function(model,data,$scope) {
@@ -182,7 +182,8 @@
 					    
 					   // $scope.users.splice( $scope.users.indexOf(data), 1 );
 					    
-					    $location.path("/");
+					    //$location.path("/");
+					    $location.path(model);
 				  
 				  }).
 				  error(function(data, status, headers, config) {
@@ -219,7 +220,8 @@
 					    
 					   // $scope.users.splice( $scope.users.indexOf(data), 1 );
 					    
-					    $location.path("/");
+					    //$location.path("/");
+					    $location.path(model);
 				  
 				  }).
 				  error(function(data, status, headers, config) {
