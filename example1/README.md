@@ -17,8 +17,11 @@ source:bootstrap3/js/bootstrap.min.js
 
 ###4.Initialize Angular App
 
-'''javascript
+code:
+code:
+```javascript
 
 var app = angular.module('app',[]);
 
-'''
+code:
+```
