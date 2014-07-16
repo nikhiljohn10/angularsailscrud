@@ -6,10 +6,10 @@ This example is about how you can use ui-router module to switch between differe
 source:views/user/index.html
 
 code:
----
+```
 <h2>Users</h2> 
 
----
+```
 
 
 
@@ -18,16 +18,16 @@ code:
 source:views/city/index.html
 
 code:
----
+```
 <h2>Cities</h2> 
 
----
+```
 
 ###2.Add router file router.js
 
 source:router.js
 
----javascript
+```javascript
 
  app.config(function ($stateProvider, $urlRouterProvider, $routeProvider) {
     
@@ -53,4 +53,4 @@ source:router.js
 
 });
 
----
+```
