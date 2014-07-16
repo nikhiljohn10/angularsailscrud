@@ -1,31 +1,20 @@
 <div ng-controller="CityCtrl">
-
-
     <br/><br/>
 
     <div row="row">
-
-
         <div class="col-md-8 col-md-offset-1">
-
-
             <h2>Cities</h2>
-
-
             <!--<a  class="btn btn-primary"  ng-click="open('','create.html');" ><i class="glyphicon glyphicon-plus"></i> Create</a>-->
             <!-- ng-click="renderCreateForm();" -->
             <!--<a  ng-href="#/create" class="btn btn-primary"   ><i class="glyphicon glyphicon-plus"></i> Create</a>-->
 
             <a ui-sref="cities.create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create</a>
 
-
             <!-- <button class="btn btn-default" ng-click="open('','modal1.html')">Create</button>-->
-
             <!--<script type="text/ng-template" id="modal1.html">-->
-
-
             <!--</script>-->
             <!-- Split button -->
+
             <div class="btn-group pull-right">
                 <button type="button" class="btn btn-primary">Actions</button>
 
@@ -33,7 +22,6 @@
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
-
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="" ng-click="deleteAll()">Delete</a></li>
                     <!--
@@ -95,7 +83,6 @@
                             ng-change="pageChanged()"></pagination>
 
             </div>
-
             <!--
             <div class="alert alert-success col-md-3 col-md-offset-12">
               <a href="#" class="alert-link"> Succesfully Added</a>
@@ -104,10 +91,8 @@
         </div>
         <br/>
 
-        <div class="col-md-3 " id="alert_container">
+        <div class="col-md-3 " id="alert_container"></div>
 
-
-        </div>
         <!--
         <div class="alert alert-warning alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -118,29 +103,13 @@
     </div>
 
     <div id="view_container" class="modal">
-
-
         <div class="modal-dialog">
-
             <div class="modal-content">
-
-
                 <div ui-view>View here</div>
-
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-
 </div>
-		     
-		     
-			      
-			     
-		             
-			      
-			      
-			      
-		    
