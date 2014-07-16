@@ -14,7 +14,19 @@ and update app settings like below:
 
 ```
 
-###2.Add index.html file for user model
+###2.Add ui-view container at index.html
+This container will be used to place dynamically switching contents.
+```
+<body ng-app="app">
+
+    <div ui-view>
+   
+     </div>
+
+</body> 
+```
+
+###3.Add index.html file for user model
 
 source:views/user/index.html
 
@@ -26,7 +38,7 @@ code:
 
 
 
-###3.Add index.html file for city mode
+###4.Add index.html file for city mode
 
 source:views/city/index.html
 
@@ -36,7 +48,7 @@ code:
 
 ```
 
-###4.Add router file router.js
+###5.Add router file router.js
 
 source:router.js
 
@@ -68,7 +80,7 @@ source:router.js
 
 ```
 
-###5.integrate router.js into index.html
+###6.integrate router.js into index.html
 code:
 ```
 <body>

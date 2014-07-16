@@ -25,18 +25,39 @@
 	  </head>
    
           <body ng-app="app">
-            
-            
            
-             <div ui-view>
-             </div>
+         
+             <div ng-controller="MenuCtrl" class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+		    <div class="container">
+			    <div class="navbar-header">
+			      
+				<a class="navbar-brand" ui-sref="users" >AngularJs + SailsJs + Bootstrap3 CRUD</a>
+			    </div>
+			    <div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				
+				    <li  ng-class="{ active: isActive('/user') }"><a ui-sref="users"  >Users</a></li>
+				    <li  ng-class="{ active: isActive('/city') }" ><a ui-sref="cities"  >Cities</a></li>
+				
+				</ul>
+			    </div>
+			    <!--/.nav-collapse -->
+		    </div>
+	      </div>  
+       <br/><br/>
+    
+            <div ui-view>
+            </div>
          
           </body>
           <script>
               var app = angular.module('app',['ngRoute','ui.router']);
+            
+                   
           </script>
           
           <script src="router.js"></script>
+          <script src="controllers/MenuController.js"></script>
     
     
     </html>
