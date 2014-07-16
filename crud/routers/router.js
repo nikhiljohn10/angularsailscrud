@@ -92,6 +92,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $rou
             }
         })
 
+	
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     /*
      .state('cities', {
