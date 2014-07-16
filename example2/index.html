@@ -5,6 +5,11 @@
 	  <!-- AngularJs-->
 	  
 	  <script src="js/angular.min.js"></script>
+	  
+	  <!-- AngularJs-ui-router module-->
+	  <script src="js/angular-route.min.js"></script>
+          <script src="js/angular-ui-router.min.js"></script>
+          
 	
 	  
 	  
@@ -21,13 +26,16 @@
    
           <body ng-app="app">
     
-   
+            <div ui-view>
+            </div>
          
           </body>
+          <script>
+              var app = angular.module('app',['ngRoute','ui.router']);
+          </script>
+          
+          <script src="router.js"></script>
     
-        <script>
-              var app = angular.module('app',[]);
-        </script>
     
     </html>
 
