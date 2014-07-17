@@ -2,7 +2,8 @@
 
 ###1.Write a new Factory with an index method to fetch all user records from REST API 
 source:API/API.js
-
+<br/>
+code:
 ```javascript
 
  app.factory('$API', function ($http, $location) {
@@ -71,6 +72,7 @@ URL:http://angularsailscrud.herokuapp.com/user?page=1&limit=10
 
 ###2.Intgrate the API file into index.html
 
+<br/>
 code:
 ```
  <script src="API/API.js"></script>
@@ -87,6 +89,7 @@ $API.index("user",$scope);
 update router.js like below,
 
 source:router.js
+<br/>
 code:
 ```javascript
   app.config(function ($stateProvider,$urlRouterProvider) {
@@ -118,6 +121,7 @@ code:
 
 source:views/user/index.html
 
+<br/>
 code:
 
 ```
