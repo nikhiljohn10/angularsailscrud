@@ -144,7 +144,7 @@ code:
 								  
 								  <th>Active</th>
 								  
-								  <tr ng-animate="{enter: 'animated flip'}" ng-repeat="user in models">
+								  <tr ng-repeat="user in models">
 								      <td>{{user.id}}</td>
 								      <td>{{user.name}}</td>
 								      <td>{{user.age}}</td>
