@@ -47,7 +47,8 @@ $API.delete(2);
   "updatedAt": "2014-07-17T12:09:58.820Z",
   "id": 2
   }
-  
+```
+
 ###2:Add a delete method on UserController
 
 source:controllers/UserController.js
