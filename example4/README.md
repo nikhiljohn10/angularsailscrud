@@ -16,8 +16,8 @@ code:
 	      
 		  var url = host + model + "/index";
 		  var data = {
-		      page: $scope.currentPage,
-		      limit: $scope.items_per_page
+		      page: 1,
+		      limit: 50
 		    
 		  };
 		  $http({
