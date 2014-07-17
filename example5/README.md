@@ -5,6 +5,12 @@
 This container will be used to popup all nested views of the user model.
 <br/>
 Note1:From here on all user model related views  will be under UserCtrl
+eg:
+```
+  <div ng-controller="UserCtrl">
+  
+  </div>
+```
 <br/>
 Note2:We are using Bootstrap modal for poping nested dialog boxes.
 <br/>
