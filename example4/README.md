@@ -89,7 +89,7 @@ update router.js like below,
 source:router.js
 code:
 ```javascript
-  app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $routeProvider) {
+  app.config(function ($stateProvider,$urlRouterProvider) {
     $urlRouterProvider.otherwise('/user');
     $stateProvider.state('users', {
         url: '/user',

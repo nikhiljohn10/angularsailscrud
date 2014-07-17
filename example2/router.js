@@ -1,4 +1,4 @@
-app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $routeProvider) {
+app.config(function ($stateProvider,$urlRouterProvider) {
     $urlRouterProvider.otherwise('/user');
 
     // HOME STATES AND NESTED VIEWS ========================================

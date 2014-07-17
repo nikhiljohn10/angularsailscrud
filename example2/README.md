@@ -54,7 +54,7 @@ source:router.js
 
 ```javascript
 
- app.config(function ($stateProvider, $urlRouterProvider, $routeProvider) {
+ app.config(function ($stateProvider, $urlRouterProvider) {
     
      $urlRouterProvider.otherwise('/user');
 
