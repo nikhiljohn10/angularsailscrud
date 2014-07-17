@@ -30,12 +30,12 @@ function UserCtrl($scope, $http, $API, $resource, $location, $log) {
     };
 
 
-    $scope.delete = function ($model) {
+    $scope.delete = function ($id) {
         var r = confirm("Are you sure?");
         if (r != true) {
             return;
         }
-        $API.delete("user", $model.id, $scope);
+	  $API.delete("user",$id, $scope);
     };
 
     $scope.deleteAll = function ($model) {
