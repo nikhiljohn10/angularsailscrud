@@ -190,6 +190,8 @@ code:
 
 source:views/user/index.html
 
+Dropdown reference:http://getbootstrap.com/components/#dropdowns
+
 code:
 ```
     <div class="btn-group pull-right">
