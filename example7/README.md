@@ -243,12 +243,6 @@ code:
 ```
 
 
-
-
-   
-}
-```
-
 ###5:Add a create button at the record view too
 
 eg:
