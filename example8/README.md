@@ -231,7 +231,8 @@ eg:
 </div>
 
 ```
-###4:Add an update button for each records in the grid
+
+###5:Add an update button for each records in the grid
 
 source:views/user/index.html
 
