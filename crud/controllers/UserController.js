@@ -22,7 +22,7 @@ function UserCtrl($scope, $http, $API, $resource, $location, $log) {
     };
 
     $scope.filter = function () {
-        $API.index("user", $scope, $scope.userFilter);
+        $API.index("user", $scope);
     };
 
     $scope.closeModal = function () {
