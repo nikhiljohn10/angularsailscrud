@@ -1,4 +1,4 @@
-##Example7:Adding Update action for the user model
+##Example8:Adding Update action for the user model
  
 ###1:Add update method in the API factory
 
