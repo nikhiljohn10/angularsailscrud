@@ -107,7 +107,7 @@ code:
 
 ```
 
-Note1: ng-checked directive is used to decide wether its checked/not
+Note1: ng-checked directive is used to decide wether its checked/not <br/>
 Note2: ng-click directive will call the method toggleSelection in the UserController
 
 
@@ -121,7 +121,7 @@ code:
   </td>
 
 ```
-Note1: ng-checked directive is used to decide wether its checked/not
+Note1: ng-checked directive is used to decide wether its checked/not <br/>
 Note2: ng-click directive will call the method selectAll in the UserController
 
 
