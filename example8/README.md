@@ -1,13 +1,12 @@
 ##Example7:Adding Update action for the user model
  
-###1:Add create method in the API factory
+###1:Add update method in the API factory
 
 
 update:API/API.js
 
 <br/>
 code:
-eg:
 ```javascript
    update: function (model, data, $scope) {
             var url = host + model + "/update/" + data.id;
@@ -51,6 +50,8 @@ $API.update("user", $user, $scope)
   }
 ```
 ###2:Add update state into the app router.js
+
+<br/>
 source:router.js
 
 <br/>
@@ -183,6 +184,7 @@ save(user);
 ```
 ###4:Add a update  form view
 
+<br/>
 source:views/user/update.html
 
 eg:
@@ -233,6 +235,7 @@ eg:
 
 source:views/user/index.html
 
+<br/>
 eg:
 ```
  <a ui-sref="users.update({id:user.id})" class="btn btn-primary glyphicon glyphicon-pencil"></a>
