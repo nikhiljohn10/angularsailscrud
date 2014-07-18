@@ -1,6 +1,6 @@
-##Example9:Making header fields sortable
+##Example10:Making header fields sortable
 
-###1:Declare  sortField & reverse  variables in at users state in the router
+###1:Declare 2 variables ie  1.sortField & 2.reverse  at the users state in the router
 
 
 source:router.js
