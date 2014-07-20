@@ -71,7 +71,7 @@ source:views/user/index.html
 code:
 ```html
   <th>
-      Id
+      <a href="" ng-click="sortField='id';reverse=!reverse;index();">Id</a>
   </th>
   <th>
       <a href="" ng-click="sortField='name';reverse=!reverse;index();">Name</a>

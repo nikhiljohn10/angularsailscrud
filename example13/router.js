@@ -10,7 +10,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	   $scope.items_per_page = 5;
            $scope.currentPage = 1;
 	   
-	   $scope.sortField = "name";
+	   $scope.sortField = "id";
            $scope.reverse = true;
 	   
 	   $scope.selection = [];
