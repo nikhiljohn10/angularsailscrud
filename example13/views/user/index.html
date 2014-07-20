@@ -1,24 +1,56 @@
   <div ng-controller="UserCtrl">
 
 			<div class="col-md-8 col-md-offset-1">
+			
+			
+			<!--<p>{{datePicker || "00/00/0000"}}</p>-->
+			  <!--  <input type="text" ng-model="datePicker" datepicker />-->
+			
+
+			
+			
+			
+
+
+    <div>
+    
+    
 
 
 				  <h2>Users</h2>
 				  
+				
+				 
 				  <a ui-sref="users.create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create</a>
+				
+				
+	                            
+           	        
+					<div class="btn-group pull-right"> 
+					    
+					    <button type="button" class="btn btn-primary">Actions</button>
+
+					    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					    </button>
+
+					    <ul class="dropdown-menu" role="menu">
+						<li><a href="" ng-click="deleteAll()">Delete</a></li>
+					    </ul>
+					</div>
+				
+				<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Date filter</button>
 				  
-				    <div class="btn-group pull-right">
-					<button type="button" class="btn btn-primary">Actions</button>
-
-					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-					    <span class="caret"></span>
-					    <span class="sr-only">Toggle Dropdown</span>
-					</button>
-
-					<ul class="dropdown-menu" role="menu">
-					    <li><a href="" ng-click="deleteAll()">Delete</a></li>
-					</ul>
-				    </div>
+				  <div collapse="isCollapsed">
+				  <hr/>
+					   From:<input type="text" class="input-sm"  datepicker-popup="{{format}}" ng-model="dateFilter.from" is-open="from_opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
+						<button type="button" class="btn btn-default" ng-click="open($event,'from')"><i class="glyphicon glyphicon-calendar"></i></button>
+				            To:<input type="text"  class="input-sm" datepicker-popup="{{format}}" ng-model="dateFilter.to" is-open="to_opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
+						<button type="button" class="btn btn-default" ng-click="open($event,'to')"><i class="glyphicon glyphicon-calendar"></i></button>
+			
+			                    <input type="button" class="btn btn-primary" value="GO">
+				  </div>
 				
 				  <hr/>
 						<div class="table-responsive">
@@ -26,7 +58,7 @@
 						
 							      <table class="table table-bordered table-hover table-condensed">
 								<th></th>
-							
+								
 								<th>
 								    Id
 								</th>

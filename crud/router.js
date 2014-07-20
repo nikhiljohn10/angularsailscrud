@@ -8,7 +8,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $rou
         controller: function ($scope, $API, $stateParams) {
             $scope.items_per_page = 5;
             $scope.currentPage = 1;
-            $scope.sortField = "id";
+            $scope.sortField = "name";
             $scope.reverse = true;
             $scope.selection = [];
             $API.index("user", $scope, $scope.userFilter);
@@ -54,7 +54,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $rou
             controller: function ($scope, $API, $stateParams) {
                 $scope.items_per_page = 5;
                 $scope.currentPage = 1;
-                $scope.sortField = "id";
+                $scope.sortField = "name";
                 $scope.reverse = true;
                 $scope.selection = [];
                 $API.index("city", $scope, $scope.userFilter);

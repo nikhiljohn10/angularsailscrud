@@ -69,9 +69,9 @@ source:views/user/index.html
 
 <br/>
 code:
-```
+```html
   <th>
-      <a href="" ng-click="sortField='id';reverse=!reverse;index();">Id</a>
+      Id
   </th>
   <th>
       <a href="" ng-click="sortField='name';reverse=!reverse;index();">Name</a>

@@ -15,6 +15,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	   
 	   $scope.selection = [];
 	    
+	   $scope.isCollapsed = true;
 	    
 	   $API.index("user",$scope);
         
