@@ -1,4 +1,4 @@
-##Example12:Adding Date Range filter
+##Example13:Adding Date Range filter
 
 ###1.Declare $scope.hideDatefilte flag inside the users state in the app router
 
