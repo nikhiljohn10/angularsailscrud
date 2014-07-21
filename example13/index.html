@@ -12,10 +12,8 @@
           <script src="js/angular-resource.min.js"></script>
 	
 	  <script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
-	   <script src="js/datePicker.js"></script>
-	   <script src="js/dateRange.js"></script>
-	   <script src="js/input.js"></script>
-	  <!-- Jquery-->
+	
+	 <!-- Jquery-->
 	  <script src="bootstrap3/js/jquery.min.js"></script>
 	  
 	  <!-- Bootstrap3.0-->
@@ -55,72 +53,6 @@
           <script>
               var app = angular.module('app',['ngRoute','ui.router','ngResource','ui.bootstrap']);
               
-         /*     
-         app.directive('calendar', function () {
-            return {
-                require: 'ngModel',
-                link: function (scope, el, attr, ngModel) {
-                    $(el).datepicker({
-                        dateFormat: 'yy-mm-dd',
-                        onSelect: function (dateText) {
-                            scope.$apply(function () {
-                                ngModel.$setViewValue(dateText);
-                            });
-                        }
-                    });
-                }
-            };
-        });
-        */
-              
-              /*
-              app.directive("datepicker", function () {
-		    return {
-		      restrict: "A",
-		      require: "ngModel",
-		      link: function (scope, elem, attrs, ngModelCtrl) {
-		        
-			var updateModel = function (dateText) {
-			  scope.$apply(function () {
-			    ngModelCtrl.$setViewValue(dateText);
-			  });
-			};
-			var options = {
-			  dateFormat: "dd/mm/yy",
-			  onSelect: function (dateText) {
-			   alert("selected");
-			    updateModel(dateText);
-			  }
-			};
-			elem.datepicker(options);
-		      }
-		    }
-		  });
-             */
-             /*
-             project.directive('datepicker', function() {
-
-		return {
-		  restrict: 'E',
-		  transclude: true,
-		  scope: {
-		    date: '='
-		  },
-		  link: function(scope, element, attrs) {
-		    element.datepicker({
-		      dateFormat: 'dd-mm-yy',
-		      onSelect: function(dateText, datepicker) {
-			scope.date = dateText;
-			scope.$apply();
-		      }
-		    });
-		  },
-		  template: '<input type="text" class="span2" ng-model="date"/>',
-		  replace: true
-		}
-
-	      });
-               */    
           </script>
           
           <script src="router.js"></script>

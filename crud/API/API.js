@@ -1,6 +1,6 @@
 app.factory('$API', function ($http, $location) {
 
-    // var host = "http://localhost:1337/";
+     //var host = "http://localhost:1337/";
     var host = "http://angularsailscrud.herokuapp.com/";
 
     return {
@@ -17,7 +17,7 @@ app.factory('$API', function ($http, $location) {
                     $scope.models.push(data);
                     $scope.model = data;
                     $scope.showMessage("Succesfully Added!", 'success', true);
-                    $scope.filter();
+                    $scope.index();
                     $location.path(model + "/" + $scope.model.id);
                 })
                 .error(function (data, status, headers, config) {
@@ -80,14 +80,20 @@ app.factory('$API', function ($http, $location) {
        index: function (model, $scope) {
            
 	 
-	    var filter = {};
+	     $scope.filter={};
+	  
+	   for (var field in $scope.dateFilter) {
+	     
+	      $scope.setDateRange(field);    
+		
+	   }
 	    
             /* Remove empty fields */
             for (var field in $scope.userFilter) {
                 
 	        if ($scope.userFilter[field]) {
 		  
-                    filter[field] = {startsWith: $scope.userFilter[field]};
+                     $scope.filter[field] = {startsWith: $scope.userFilter[field]};
                 }
             }
             
@@ -97,7 +103,7 @@ app.factory('$API', function ($http, $location) {
                 limit: $scope.items_per_page,
                  sort: $scope.sortField,
                 order: $scope.reverse,
-	        filter: filter,
+	        filter:$scope.filter,
             };
             $http({
                 method: 'GET',
@@ -123,7 +129,7 @@ app.factory('$API', function ($http, $location) {
                 .success(function (data, status, headers, config) {
                     $('#view_container').modal('hide');
                     $scope.showMessage("Deleted Succesfully!", 'success', true);
-                    $scope.filter();
+                    $scope.index();
                     // $scope.users.splice( $scope.users.indexOf(data), 1 );
                     //$location.path("/");
                     $location.path(model);
@@ -148,7 +154,7 @@ app.factory('$API', function ($http, $location) {
                     // alert(angular.toJson(data));
                     $('#view_container').modal('hide');
                     $scope.showMessage("Deleted Succesfully!", 'success', true);
-                    $scope.filter();
+                    $scope.index();
                     // $scope.users.splice( $scope.users.indexOf(data), 1 );
                     //$location.path("/");
                     $location.path(model);

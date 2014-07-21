@@ -1,12 +1,12 @@
-##Example12:Adding Multiple delete action 
+##Example12:Adding Date Range filter
 
-###1.Declare selection variable inside the users state in the app router
+###1.Declare $scope.hideDatefilte flag inside the users state in the app router
 
 Note:Which will be used to track the selected records
 
 eg:
 ```javascript
-$scope.selection = [];
+$scope.hideDatefilter = true;
 ```
 
 source:router.js
@@ -27,50 +27,130 @@ code:
 	   
 	   $scope.selection = [];
 	    
-	    
+	
+	   $scope.hideDatefilter = true;
+	   
+  
 	   $API.index("user",$scope);
         
-        }
+          }
     })
 
 ```
-###2:Add delete All method in API factory
+###2:Add Date Range filter Markup at the user grid view
 
 
-source:API/API.js
+source:views/user/index.html
+
+angularui date picker reference:http://angular-ui.github.io/bootstrap/#/datepicker
 
 <br/>
 code:
-```javascript
-       deleteAll: function (model, $scope) {
-            var url = host + model + "/destroyAll/";
-            var data = {
-                ids: $scope.selection
-            };
+```html
+       <button class="btn btn-default" ng-click="hideDatefilter = !hideDatefilter">Date filter</button>
+				  
+      <div collapse="hideDatefilter">
+      <hr/>
+	      <form id="date_filter">
+	      From:<input type="text" class="input-sm" starting-day="1"  datepicker-popup="{{format}}" ng-model="dateFilter.from" is-open="from_opened" min-date="minDate" max-date="'2015-06-22'"  datepicker-options="dateOptions"  date-disabled="disabled(date, mode)"  close-text="Close" />
+		   
+		   <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'from')"><i class="glyphicon glyphicon-calendar"></i></button>
+		
+		To:<input type="text"  class="input-sm" datepicker-popup="{{format}}" ng-model="dateFilter.to" is-open="to_opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
+		   
+		   <button type="button" class="btn btn-default" ng-click="openDatePicker($event,'to')"><i class="glyphicon glyphicon-calendar"></i></button>
 
-            $http({method: 'DELETE',
+		<input type="button" class="btn btn-primary" value="GO" ng-click="index()" />
+	     </form>  
+      </div>
+
+```
+###3:Add a openDatePicker function
+
+source:controller/UserController.js
+
+code:
+
+```javascript
+ $scope.openDatePicker = function($event,$name) {
+         
+		$event.preventDefault();
+		$event.stopPropagation();
+             
+	      if($name=="from")
+		$scope.from_opened = true;
+	      else
+		$scope.to_opened = true;
+		
+     };
+```
+
+###4:Update index method in API
+
+Source:API/API.js
+<br/>
+eg:
+```javascript
+ for (var field in $scope.dateFilter) {
+	     
+	      $scope.setDateRange(field);    
+		
+	   }
+```
+code:
+```javascript
+index: function (model, $scope) {
+           
+	  $scope.filter={};
+	  
+	   for (var field in $scope.dateFilter) {
+	     
+	      $scope.setDateRange(field);    
+		
+	   }
+            /* Remove empty fields */
+         
+	    
+	   for (var field in $scope.userFilter) {
+                
+	        if ($scope.userFilter[field]) {
+		  
+                    $scope.filter[field] = {startsWith: $scope.userFilter[field]};
+                }
+            }
+            
+            
+            var url = host + model + "/index";
+	  
+            var data = {
+                  page: $scope.currentPage,
+                 limit: $scope.items_per_page,
+                  sort: $scope.sortField,
+                 order: $scope.reverse,
+	        filter: $scope.filter
+            };
+            $http({
+                method: 'GET',
                 url: url,
                 params: data
             })
                 .success(function (data, status, headers, config) {
                    
-                   
-                    $scope.index();
-		    
-		    $("#user_all").attr('checked', false);
- 
-
+		   //alert(angular.toJson(data));
+		   
+                    $scope.models = data.data;
+                    $scope.totalItems = data.totalItems;
+                  
                 })
                 .error(function (data, status, headers, config) {
-                   
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
+                  
                 });
         }
+        
 
 ```
 
-###3:Add deleteAll method in UserController
+###5:Add setDateRange method on the UserController
 
 <br/>
 source:controllers/UserController.js
@@ -80,131 +160,50 @@ code:
 ```javascript
   
   
-        $scope.deleteAll = function ($model) {
-	  
-        var r = confirm("Are you sure?");
-        if (r != true) {
-            return;
-        }
-        if ($scope.selection.length == 0) {
-            alert("No records selected");
-            return;
-        }
-        $API.deleteAll("user", $scope);
+        $scope.setDateRange = function(field) {
+       
+         if(field=="from")
+		     {
+		         
+		        $scope.dateFilter[field].setHours(00,00,00,00);
+		     
+		        if ($scope.dateFilter['to'])
+			{
+			
+			   $scope.dateFilter['to'].setHours(23,59,59,999);
+			     
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field],'<=':$scope.dateFilter['to']}; 
+			   
+			}
+			else
+			{
+			
+		           $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field]};
+		
+			}
+		     }
+		     else if(field=="to")
+		     {
+		  
+		        $scope.dateFilter[field].setHours(23,59,59,999);
+			
+			
+		        if ($scope.dateFilter['from'])
+			{
+			   $scope.dateFilter['from'].setHours(00,00,00,00);
+			 
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter['from'],'<=':$scope.dateFilter[field]}; 
+			}
+			else
+			{
+		           $scope.filter['createdAt'] = {'<=':$scope.dateFilter[field]}
+			}
+		     }
+       
     };
+    
         
 ```
 
-###4:Add a checkbox to each of the record.
-
-<br/>
-eg:
-code:
-```
-<td>
-      <input id="{{user.id}}" type="checkbox" value="{{user.id}}" ng-checked="selection.indexOf(user.id) > -1" ng-click="toggleSelection(user.id)"/>
-</td>
-
-```
-
-Note1: ng-checked directive is used to decide wether its checked/not <br/>
-Note2: ng-click directive will call the method toggleSelection in the UserController
 
 
-###5:Add a select all checkbox on the top row of the grid view.
-<br/>
-eg:
-code:
-```
- <td>
-    <input id="user_all" type="checkbox" value="" ng-click="selectAll($event)"  />
-  </td>
-
-```
-Note1: ng-checked directive is used to decide wether its checked/not <br/>
-Note2: ng-click directive will call the method selectAll in the UserController
-
-
-
-###6:Add toggleSelection method in UserController
-
-The purpose of this function is to push/pop record id's from the selection array when user check/uncheck the records.
-
-<br/>
-eg:
-code:
-```
- $scope.toggleSelection = function toggleSelection(id) {
-      
-        var idx = $scope.selection.indexOf(id);
-	
-        $("#user_all").attr('checked', false);
-	
-        // is currently selected
-        if (idx > -1) {
-	     //already checked so delete from the selection array
-	     
-            $scope.selection.splice(idx, 1);
-        }
-        // is newly selected
-        else {
-	  
-            $scope.selection.push(id);
-        }
-    };
-
-```
-
-###7:Add selectAll method in UserController
-
-The purpose of this function is to push/pop all record id's from the selection array when user check/uncheck checkbox at the top
-
-<br/>
-eg:
-code:
-```
-  $scope.selectAll = function ($event) {
-      
-        var checkbox = $event.target;
-      
-	for (var i in $scope.models) {
-        
-	   var idx = $scope.selection.indexOf($scope.models[i].id);
-	   
-            if (idx > -1) {
-	               /* delete if not in the array */
-                if (!checkbox.checked) {
-                    $scope.selection.splice(idx, 1);
-                }
-            }
-            // is newly selected
-            else {
-                $scope.selection.push($scope.models[i].id);
-            }
-        }
-    };
-
-```
-
-###8:Add an actions dropDown with delete action at the right top of the grid
-
-source:views/user/index.html
-
-Dropdown reference:http://getbootstrap.com/components/#dropdowns
-
-code:
-```
-    <div class="btn-group pull-right">
-	<button type="button" class="btn btn-primary">Actions</button>
-
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-	    <span class="caret"></span>
-	    <span class="sr-only">Toggle Dropdown</span>
-	</button>
-
-	<ul class="dropdown-menu" role="menu">
-	    <li><a href="" ng-click="deleteAll()">Delete</a></li>
-	</ul>
-    </div>
-
-```

@@ -8,9 +8,11 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $rou
         controller: function ($scope, $API, $stateParams) {
             $scope.items_per_page = 5;
             $scope.currentPage = 1;
-            $scope.sortField = "name";
+            $scope.sortField = "id";
             $scope.reverse = true;
             $scope.selection = [];
+	    $scope.hideDatefilter = true;
+	    
             $API.index("user", $scope, $scope.userFilter);
         }
     })

@@ -102,7 +102,7 @@ function UserCtrl($scope,$http,$API) {
         $API.deleteAll("user", $scope);
     };
 
-     $scope.open = function($event,$name) {
+     $scope.openDatePicker = function($event,$name) {
          
 		$event.preventDefault();
 		$event.stopPropagation();
@@ -113,7 +113,48 @@ function UserCtrl($scope,$http,$API) {
 		$scope.to_opened = true;
 		
      };
-    
-
+     
+     $scope.setDateRange = function(field) {
+       
+         if(field=="from")
+		     {
+		         
+		        $scope.dateFilter[field].setHours(00,00,00,00);
+		     
+		        if ($scope.dateFilter['to'])
+			{
+			
+			   $scope.dateFilter['to'].setHours(23,59,59,999);
+			     
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field],'<=':$scope.dateFilter['to']}; 
+			   
+			}
+			else
+			{
+			
+		           $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field]};
+		
+			}
+		     }
+		     else if(field=="to")
+		     {
+		  
+		        $scope.dateFilter[field].setHours(23,59,59,999);
+			
+			
+		        if ($scope.dateFilter['from'])
+			{
+			   $scope.dateFilter['from'].setHours(00,00,00,00);
+			 
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter['from'],'<=':$scope.dateFilter[field]}; 
+			}
+			else
+			{
+		           $scope.filter['createdAt'] = {'<=':$scope.dateFilter[field]}
+			}
+		     }
+       
+    };
+   
    
 }

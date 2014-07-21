@@ -42,14 +42,14 @@ code:
   index: function (model, $scope) {
            
 	 
-	    var filter = {};
+	    $scope.filter = {};
 	    
             /* Remove empty fields */
             for (var field in $scope.userFilter) {
                 
 	        if ($scope.userFilter[field]) {
 		  
-                    filter[field] = {startsWith: $scope.userFilter[field]};
+                    $scope.filter[field] = {startsWith: $scope.userFilter[field]};
                 }
             }
             
@@ -59,7 +59,7 @@ code:
                 limit: $scope.items_per_page,
                  sort: $scope.sortField,
                 order: $scope.reverse,
-	       filter: filter
+	       filter: $scope.filter
             };
             $http({
                 method: 'GET',

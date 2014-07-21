@@ -21,7 +21,7 @@ function UserCtrl($scope, $http, $API, $resource, $location, $log) {
         $API.update("user", $user, $scope);
     };
 
-    $scope.filter = function () {
+    $scope.index = function () {
         $API.index("user", $scope);
     };
 
@@ -104,4 +104,59 @@ function UserCtrl($scope, $http, $API, $resource, $location, $log) {
             }
         }
     };
+    
+     $scope.openDatePicker = function($event,$name) {
+         
+		$event.preventDefault();
+		$event.stopPropagation();
+             
+	      if($name=="from")
+		$scope.from_opened = true;
+	      else
+		$scope.to_opened = true;
+		
+     };
+    
+     $scope.setDateRange = function(field) {
+       
+         if(field=="from")
+		     {
+		         
+		        $scope.dateFilter[field].setHours(00,00,00,00);
+		     
+		        if ($scope.dateFilter['to'])
+			{
+			
+			   $scope.dateFilter['to'].setHours(23,59,59,999);
+			     
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field],'<=':$scope.dateFilter['to']}; 
+			   
+			}
+			else
+			{
+			
+		           $scope.filter['createdAt'] = {'>=':$scope.dateFilter[field]};
+		
+			}
+		     }
+		     else if(field=="to")
+		     {
+		  
+		        $scope.dateFilter[field].setHours(23,59,59,999);
+			
+			
+		        if ($scope.dateFilter['from'])
+			{
+			   $scope.dateFilter['from'].setHours(00,00,00,00);
+			 
+			   $scope.filter['createdAt'] = {'>=':$scope.dateFilter['from'],'<=':$scope.dateFilter[field]}; 
+			}
+			else
+			{
+		           $scope.filter['createdAt'] = {'<=':$scope.dateFilter[field]}
+			}
+		     }
+       
+    };
+    
 }

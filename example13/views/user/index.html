@@ -1,6 +1,6 @@
   <div ng-controller="UserCtrl">
 
-			<div class="col-md-8 col-md-offset-1">
+			<div class="col-md-9 col-md-offset-1">
 			
 			
 			<!--<p>{{datePicker || "00/00/0000"}}</p>-->
@@ -9,12 +9,6 @@
 
 			
 			
-			
-
-
-    <div>
-    
-    
 
 
 				  <h2>Users</h2>
@@ -40,16 +34,18 @@
 					    </ul>
 					</div>
 				
-				<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Date filter</button>
+				<button class="btn btn-default" ng-click="hideDatefilter = !hideDatefilter">Date filter</button>
 				  
-				  <div collapse="isCollapsed">
+				  <div collapse="hideDatefilter">
 				  <hr/>
-					   From:<input type="text" class="input-sm"  datepicker-popup="{{format}}" ng-model="dateFilter.from" is-open="from_opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
-						<button type="button" class="btn btn-default" ng-click="open($event,'from')"><i class="glyphicon glyphicon-calendar"></i></button>
+				           <form id="date_filter">
+					   From:<input type="text" class="input-sm" starting-day="1"  datepicker-popup="{{format}}" ng-model="dateFilter.from" is-open="from_opened" min-date="minDate" max-date="'2015-06-22'"  datepicker-options="dateOptions"  date-disabled="disabled(date, mode)"  close-text="Close" />
+						<button type="button" class="btn btn-default" ng-click="openDatePicker($event,'from')"><i class="glyphicon glyphicon-calendar"></i></button>
 				            To:<input type="text"  class="input-sm" datepicker-popup="{{format}}" ng-model="dateFilter.to" is-open="to_opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"  close-text="Close" />
-						<button type="button" class="btn btn-default" ng-click="open($event,'to')"><i class="glyphicon glyphicon-calendar"></i></button>
+						<button type="button" class="btn btn-default" ng-click="openDatePicker($event,'to')"><i class="glyphicon glyphicon-calendar"></i></button>
 			
-			                    <input type="button" class="btn btn-primary" value="GO">
+			                    <input type="button" class="btn btn-primary" value="GO" ng-click="index()" />
+			                    </form>  
 				  </div>
 				
 				  <hr/>
@@ -70,6 +66,9 @@
 								</th>
 								<th>
 								    <a href="" ng-click="sortField='active';reverse=!reverse;index();">Active</a>
+								</th>
+								<th>
+								    <a href="" ng-click="sortField='createdAt';reverse=!reverse;index();">createdAt</a>
 								</th>
 								  
 								<th colspan="3" class="col-md-3">Actions</th>
@@ -94,6 +93,8 @@
 										</select>
 										
 									    </td>
+									    <td></td>
+									    
 									</form>
                                                                   </tr>
                     
@@ -105,6 +106,7 @@
 								      <td>{{user.name}}</td>
 								      <td>{{user.age}}</td>
 								      <td>{{user.active}}</td>
+								      <td>{{user.createdAt}}</td>
 								      
 								      <td>
 								        
@@ -123,8 +125,6 @@
 						</div>
 
 		      
-			</div>
-       
        
                         <!--Modal to display Nested views-->
                         <div id="view_container" class="modal">

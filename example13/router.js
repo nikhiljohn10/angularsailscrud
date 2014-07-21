@@ -15,8 +15,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 	   
 	   $scope.selection = [];
 	    
-	   $scope.isCollapsed = true;
-	    
+	
+	   $scope.hideDatefilter = true;
+	   
+  
 	   $API.index("user",$scope);
         
         }

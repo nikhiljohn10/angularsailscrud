@@ -1,6 +1,6 @@
 app.factory('$API', function ($http, $location) {
 
-        var host = "http://angularsailscrud.herokuapp.com/";
+       var host = "http://angularsailscrud.herokuapp.com/";
     // var host = "http://localhost:1337/";
 
     return {
@@ -55,17 +55,24 @@ app.factory('$API', function ($http, $location) {
 	 
         index: function (model, $scope) {
            
-	 
-	    var filter = {};
-	    
+	  $scope.filter={};
+	  
+	   for (var field in $scope.dateFilter) {
+	     
+	      $scope.setDateRange(field);    
+		
+	   }
             /* Remove empty fields */
-            for (var field in $scope.userFilter) {
+           //$scope.removeEmptyFields();
+	    
+	   for (var field in $scope.userFilter) {
                 
 	        if ($scope.userFilter[field]) {
 		  
-                    filter[field] = {startsWith: $scope.userFilter[field]};
+                    $scope.filter[field] = {startsWith: $scope.userFilter[field]};
                 }
             }
+            
             
             var url = host + model + "/index";
 	  
@@ -74,7 +81,7 @@ app.factory('$API', function ($http, $location) {
                  limit: $scope.items_per_page,
                   sort: $scope.sortField,
                  order: $scope.reverse,
-	        filter: filter
+	        filter: $scope.filter
             };
             $http({
                 method: 'GET',
