@@ -72,7 +72,7 @@ app.factory('$API', function ($http, $location) {
                     $scope.filter[field] = {startsWith: $scope.userFilter[field]};
                 }
             }
-            
+            alert(angular.toJson($scope.filter));
             
             var url = host + model + "/index";
 	  

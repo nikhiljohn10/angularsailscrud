@@ -87,6 +87,12 @@ code:
 
 ###4:Update index method in API
 
+<br/>
+dateRange Json format:
+```javascript
+{"createdAt":{">=":"2014-07-07T18:30:00.000Z","<=":"2014-07-22T18:29:59.999Z"}}
+```
+
 Source:API/API.js
 <br/>
 eg:
@@ -149,6 +155,7 @@ index: function (model, $scope) {
         
 
 ```
+
 
 ###5:Add setDateRange method on the UserController
 
