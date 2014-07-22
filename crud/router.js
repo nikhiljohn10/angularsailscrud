@@ -13,6 +13,8 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $rou
             $scope.selection = [];
 	    $scope.hideDatefilter = true;
 	    
+	    $scope.pageSizeOptions=[5,10,30,50,100,200,500,1000];
+	    
             $API.index("user", $scope, $scope.userFilter);
         }
     })
