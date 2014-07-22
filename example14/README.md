@@ -49,7 +49,7 @@ code:
 ```html
   <div class="pull-right">  
     PageSize:<select class="form-control input-sm" ng-model="items_per_page" ng-change="pageChanged()" ng-options="size for size in pageSizeOptions" ></select>
-  </div
+  </div>
 ```
 
 
