@@ -12,7 +12,6 @@ eg:
   app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/user');
 
-    // HOME STATES AND NESTED VIEWS ========================================
     $stateProvider.state('users', {
         url: '/user',
         templateUrl: 'views/user/index.html',
