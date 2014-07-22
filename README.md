@@ -31,3 +31,15 @@
 #####Example14:Adding PageSize DropDown ([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example14)| [Run now](http://sirinibin.github.io/example14/))
 
 
+<br/>
+Happy coding....
+
+<br/>
+Team Nintriva
+
+<br/>
+http://www.nintriva.com
+
+<br/>
+support@nintriva.com
+
