@@ -34,12 +34,9 @@
 <br/>
 Happy coding....
 
-<br/>
 Team Nintriva
 
-<br/>
 http://www.nintriva.com
 
-<br/>
 support@nintriva.com
 
