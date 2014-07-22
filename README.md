@@ -1,4 +1,4 @@
-##Angular CRUD examples
+##AngularJs + SailsJs CRUD examples
 
 #####Example1:Setting up AngularJs playground([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example1),[Run now](http://sirinibin.github.io/example1/))
 
