@@ -9,6 +9,38 @@ update:API/API.js
 code:
 eg:
 ```javascript
+  create: function (model, data, $scope) {
+	    
+	   
+            var url = host + model + "/create";
+            $http({
+                method: 'POST',
+                url: url,
+                params: data,
+                isArray: true
+            })
+                .success(function (data, status, headers, config) {
+                    // alert("ok:"+angular.toJson(data));
+                    $scope.models.push(data);
+                    $scope.model = data;
+                 
+                    $scope.index();
+                    $location.path(model + "/" + $scope.model.id);
+		    
+                })
+                .error(function (data, status, headers, config) {
+                    
+                    // called asynchronously if an error occurs
+                    // or server returns response with an e	rror status.
+                });
+        }
+```
+###2:Add a create state on router.js 
+ 
+ update file:router.js
+code:
+eg:
+```javascript
   app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/user');
 
@@ -75,7 +107,7 @@ Usage:
   }
 ```
 
-###2:Add a create method on UserController
+###3:Add a create method on UserController
 
 source:controllers/UserController.js
 
@@ -120,7 +152,7 @@ Usage:
 create(user);
 
 ```
-###3:Add a create  form markup
+###4:Add a create  form markup
 
 source:views/user/create.html
 
@@ -163,7 +195,7 @@ eg:
     </form>
 
 ```
-###4:Add a create button at the top of the grid
+###5:Add a create button at the top of the grid
 
 eg:
 ```
@@ -242,7 +274,7 @@ code:
 ```
 
 
-###5:Add a create button at the record view too
+###6:Add a create button at the record view too
 
 eg:
 ```

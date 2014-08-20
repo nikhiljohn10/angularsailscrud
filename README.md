@@ -14,7 +14,7 @@
 
 #####Example6:Add Delete action for each records ([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example6)| [Run now](http://sirinibin.github.io/example6/))
 
-#####Example7:Adding Create action for the user model ([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example7)| [Run now](http://sirinibin.github.io/example4/))
+#####Example7:Adding Create action for the user model ([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example7)| [Run now](http://sirinibin.github.io/example7/))
 
 #####Example8:Adding Update action for the user model ([Source code](https://github.com/sirinibin/angularsailscrud/tree/master/example8)| [Run now](http://sirinibin.github.io/example8/))
 
