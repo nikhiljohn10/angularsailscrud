@@ -35,6 +35,25 @@ eg:
                 });
         }
 ```
+Usage:
+```javascript
+ $API.create("user", $user, $scope);
+
+```
+
+  ####JSON response:
+```javascript
+
+  {
+  "age": 436,
+  "name": "kjnkjn",
+  "active": "true",
+  "createdAt": "2014-07-17T12:09:58.820Z",
+  "updatedAt": "2014-07-17T12:09:58.820Z",
+  "id": 2
+  }
+```
+
 ###2:Add a create state on router.js 
  
  update file:router.js
@@ -87,24 +106,6 @@ eg:
         })
 
 });
-```
-Usage:
-```javascript
- $API.create("user", $user, $scope);
-
-```
-
-  ####JSON response:
-```javascript
-
-  {
-  "age": 436,
-  "name": "kjnkjn",
-  "active": "true",
-  "createdAt": "2014-07-17T12:09:58.820Z",
-  "updatedAt": "2014-07-17T12:09:58.820Z",
-  "id": 2
-  }
 ```
 
 ###3:Add a create method on UserController
